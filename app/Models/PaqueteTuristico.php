@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PaqueteTuristico extends Model
 {
+    protected $table ='paquetes_turisticos';
     protected $fillable = [
         'destino',
         'descripcion', 
@@ -16,7 +17,7 @@ class PaqueteTuristico extends Model
         
     ];
 
-    public function reservas()
+    public function reserva()
     {
         return $this->hasMany(Reserva::class);
     }
