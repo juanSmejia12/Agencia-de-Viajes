@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_clientes', function (Blueprint $table) {
+        Schema::create('paquetes_turisticos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 50);
-            $table->string('apellido', 50);
-            $table->string('telefono')->nullable();
-            $table->string('email')->unique();
-            $table->string('direccion')->nullable();
+            $table->string('destino');
+            $table->text('descripcion');
+            $table->string('duracion');
+            $table->decimal('precio', 10, 2);
+            $table->text('incluye');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_clientes');
+        Schema::dropIfExists('paquetes_turisticos');
     }
 };
