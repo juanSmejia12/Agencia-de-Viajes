@@ -21,12 +21,22 @@ class ClienteController extends Controller
 
     public function create()
     {
-       //
+        return view('clientes.create');
     }
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'telefono' => 'required|string|max:20',
+            'email' => 'required|email|unique:clientes,email',
+            'direccion' => 'required|string|max:255',
+        ]);
+
+        Cliente::create($request->all());
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente creado correctamente.');
     }
 
     public function show(Cliente $cliente)
@@ -41,12 +51,12 @@ class ClienteController extends Controller
 
     public function update(Request $request, Cliente $cliente)
     {
-       //
+        //
     }
 
     public function destroy(Cliente $cliente)
     {
-       //
+        //
     }
 }
 
