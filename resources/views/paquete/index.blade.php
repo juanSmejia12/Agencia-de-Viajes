@@ -30,13 +30,19 @@
                                     <strong>Precio:</strong> ${{ number_format($paquete->precio, 2) }}<br>
                                     <strong>Duración:</strong> {{ $paquete->duracion }} días
                                 </p>
+                                <div class="d-flex justify-content-between">
+                                <a href="{{ route('paquete.edit', $paquete->id) }}" class="btn btn-primary btn-sm rounded-pill px-3">
+                                    <i class="bi bi-pencil-square"></i> Editar
+                                </a>
+
                                 <form action="{{ route('paquete.destroy', $paquete->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este paquete?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm rounded-pill px-3">
-                                        <i class="bi bi-trash-fill"></i> Eliminar
+                                        <i class="bi bi-trash"></i> Eliminar
                                     </button>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

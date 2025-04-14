@@ -62,7 +62,8 @@ class PaqueteTuristicoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $paquete = PaqueteTuristico::findOrFail($id);
+        return view('paquete.edit', compact('paquete'));
     }
 
     /**
@@ -70,7 +71,18 @@ class PaqueteTuristicoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'destino' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+            'duracion' => 'required|integer',
+            'precio' => 'required|numeric',
+            'incluye' => 'nullable|string',
+        ]);
+    
+        $paquete = PaqueteTuristico::findOrFail($id);
+        $paquete->update($request->all());
+    
+        return redirect()->route('paquete.index')->with('success', 'Paquete actualizado correctamente');
     }
 
     /**

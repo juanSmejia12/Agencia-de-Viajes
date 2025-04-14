@@ -31,7 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/paquetes/create', [PaqueteTuristicoController::class, 'create'])->name('paquete.create');
     Route::post('/paquetes', [PaqueteTuristicoController::class, 'store'])->name('paquete.store');
     Route::delete('/paquetes/{paquete}', [PaqueteTuristicoController::class, 'destroy'])->name('paquete.destroy');
-
+    Route::get('/paquetes/{paquete}/edit', [PaqueteTuristicoController::class, 'edit'])->name('paquete.edit');
+    Route::put('/paquetes/{paquete}', [PaqueteTuristicoController::class, 'update'])->name('paquete.update');
 });
 
 
