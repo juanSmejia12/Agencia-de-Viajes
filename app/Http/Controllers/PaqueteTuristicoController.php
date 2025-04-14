@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PaqueteTuristico;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class PaqueteTuristicoController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+    {
+        $this->middleware('auth'); 
+    }
     public function index()
     {
-        //
+        $paquetes = PaqueteTuristico::all();
+        return view('paquete.index', compact('paquetes'));
     }
 
     /**
