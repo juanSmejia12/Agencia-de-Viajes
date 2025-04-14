@@ -6,6 +6,12 @@
     </x-slot>
 
     <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="{{ route('paquete.create') }}" class="btn btn-success btn-lg shadow rounded-pill px-4">
+                <i class="bi bi-person-plus-fill"></i> Agregar Paquete Turistico
+            </a>
+        </div>
+
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}

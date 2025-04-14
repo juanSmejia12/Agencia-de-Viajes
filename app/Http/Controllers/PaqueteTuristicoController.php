@@ -28,7 +28,7 @@ class PaqueteTuristicoController extends Controller
      */
     public function create()
     {
-        //
+        return view('paquete.create');
     }
 
     /**
@@ -36,7 +36,17 @@ class PaqueteTuristicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'destino' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'duracion' => 'required|string|max:100',
+            'precio' => 'required|numeric|min:0',
+            'incluye' => 'required|string',
+        ]);
+    
+        PaqueteTuristico::create($request->all());
+    
+        return redirect()->route('paquete.index')->with('success', 'Paquete turístico creado exitosamente.');
     }
 
     /**

@@ -28,6 +28,10 @@ Route::middleware('auth')->group(function () {
 
     //para paquetes turisticos 
     Route::get('/paquetes', [PaqueteTuristicoController::class, 'index'])->name('paquete.index');
+    Route::get('/paquetes/create', [PaqueteTuristicoController::class, 'create'])->name('paquete.create');
+    Route::post('/paquetes', [PaqueteTuristicoController::class, 'store'])->name('paquete.store');
+
+
 });
 
 
