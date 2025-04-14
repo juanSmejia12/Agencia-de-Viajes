@@ -30,6 +30,13 @@
                                     <strong>Precio:</strong> ${{ number_format($paquete->precio, 2) }}<br>
                                     <strong>Duración:</strong> {{ $paquete->duracion }} días
                                 </p>
+                                <form action="{{ route('paquete.destroy', $paquete->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este paquete?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm rounded-pill px-3">
+                                        <i class="bi bi-trash-fill"></i> Eliminar
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

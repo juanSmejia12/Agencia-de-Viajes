@@ -78,6 +78,9 @@ class PaqueteTuristicoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $paquete = PaqueteTuristico::findOrFail($id);
+        $paquete->delete();
+
+        return redirect()->route('paquete.index')->with('success', 'Paquete eliminado correctamente');
     }
 }

@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/paquetes', [PaqueteTuristicoController::class, 'index'])->name('paquete.index');
     Route::get('/paquetes/create', [PaqueteTuristicoController::class, 'create'])->name('paquete.create');
     Route::post('/paquetes', [PaqueteTuristicoController::class, 'store'])->name('paquete.store');
-
+    Route::delete('/paquetes/{paquete}', [PaqueteTuristicoController::class, 'destroy'])->name('paquete.destroy');
 
 });
 
