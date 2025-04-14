@@ -46,12 +46,22 @@ class ClienteController extends Controller
 
     public function edit(Cliente $cliente)
     {
-        //
+        return view('clientes.edit', compact('cliente'));
     }
 
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        $request->validate([
+        'nombre' => 'required|string|max:255',
+        'apellido' => 'required|string|max:255',
+        'telefono' => 'required|string|max:20',
+        'email' => 'required|email|unique:clientes,email,' . $cliente->id,
+        'direccion' => 'required|string|max:255',
+    ]);
+
+    $cliente->update($request->all());
+
+    return redirect()->route('clientes.index')->with('success', 'Cliente actualizado correctamente.');
     }
 
     public function destroy(Cliente $cliente)

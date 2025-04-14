@@ -30,13 +30,19 @@
                                     <strong>Email:</strong> {{ $cliente->email }}<br>
                                     <strong>Dirección:</strong> {{ $cliente->direccion }}
                                 </p>
-                                    <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este cliente?');">
+                                <div class="d-flex justify-content-between">
+                                <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-primary btn-sm rounded-pill px-3">
+                                    <i class="bi bi-pencil-square"></i> Editar
+                                </a>
+
+                                <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este cliente?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm rounded-pill px-3">
-                                    <i class="bi bi-trash-fill"></i> Eliminar
+                                        <i class="bi bi-trash"></i> Eliminar
                                     </button>
                                     </form>
+                                </div>
                             </div>
                         </div>
                     </div>
