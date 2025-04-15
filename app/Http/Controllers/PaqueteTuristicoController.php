@@ -54,7 +54,8 @@ class PaqueteTuristicoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $paquete = PaqueteTuristico::findOrFail($id);
+        return view('paquete.show', compact('paquete'));
     }
 
     /**

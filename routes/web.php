@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/paquetes/{paquete}', [PaqueteTuristicoController::class, 'destroy'])->name('paquete.destroy');
     Route::get('/paquetes/{paquete}/edit', [PaqueteTuristicoController::class, 'edit'])->name('paquete.edit');
     Route::put('/paquetes/{paquete}', [PaqueteTuristicoController::class, 'update'])->name('paquete.update');
+    Route::get('/paquetes/{paquete}', [PaqueteTuristicoController::class, 'show'])->name('paquete.show');
 });
 
 
